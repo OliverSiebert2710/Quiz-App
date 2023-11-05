@@ -1,0 +1,17 @@
+body {
+    background-color: #3C9DCA !important;
+}
+
+.container {
+    min-height: 100vh;
+    background-color: #3C9DCA !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.question_footer {
+    display: flex;
+    justify-content: space-between;
+}
