@@ -1,17 +1,27 @@
 body {
-    background-color: #3C9DCA !important;
+    background-color: #1C1A1B !important;
+    color: #DC3545 !important;
 }
 
 .container {
     min-height: 100vh;
-    background-color: #3C9DCA !important;
+    background-color: #1C1A1B !important;
     display: flex;
     align-items: center;
     justify-content: center;
     
 }
 
+.card {
+    background-color: #1C1A1B !important;
+    color:#DC3545 !important;
+}
+
 .question_footer {
     display: flex;
     justify-content: space-between;
+}
+
+.card-img-top {
+    height: 40vh;
 }

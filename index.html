@@ -21,10 +21,10 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body onload="init()">
 
     <div class="container">
-      <div class="card" style="width: 30rem">
+      <div class="card">
         <img src="/img/quiz-time.png" class="card-img-top" alt="bild" />
         <div class="card-body">
           <h5 class="card-title">Frage</h5>
@@ -54,8 +54,8 @@
           </div>
 
           <div class="question_footer">
-            <span><b>1 von 5 Fragen</b></span>
-            <button type="button" class="btn btn-outline-primary">Primary</button>
+            <span><b>1</b> von <b id="question_amount">5</b> Fragen</b></span>
+            <button type="button" class="btn btn-outline-danger">Danger</button>
           </div>
         </div>
       </div>
