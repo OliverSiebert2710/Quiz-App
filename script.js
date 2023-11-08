@@ -107,8 +107,10 @@ function answer(selection) {
     console.log('Current question is', question['right_answer']);
 
     if(selectedQuestionNumber == question['right_answer']) {
-        console.log('Richtige Antwort!')
+        console.log('Richtige Antwort!');
+        document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
-        console.log('Falsche Antwort!')
+        console.log('Falsche Antwort!');
+        document.getElementById(selection).parentNode.classList.add('bg-warning');
     }
 }

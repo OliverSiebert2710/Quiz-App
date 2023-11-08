@@ -47,3 +47,16 @@ body {
     background-color:#E8676E !important;
 }
 
+.bg-success {
+    color: white !important;
+}
+
+.bg-warning {
+    color:#2E2E2E !important;
+    border-style: none !important;
+}
+
+.bg-success:hover{
+    color: white !important;
+}
+
