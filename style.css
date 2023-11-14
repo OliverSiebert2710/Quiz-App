@@ -34,7 +34,8 @@ body {
 }
 
 .card-img-top {
-    height: 40vh;
+    height: 50vh;
+    object-fit: contain;
 }
 
 .btn {
@@ -58,5 +59,35 @@ body {
 
 .bg-success:hover{
     color: white !important;
+}
+
+.trophy {
+    height: 50vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+.center {
+    text-align: center;
+}
+
+.final_headline {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.progress {
+    background-color: #2E2E2E !important;
+}
+
+.progress-bar {
+    background-color: #E8676E !important;
+    color: #2E2E2E !important;
+}
+
+.restart_button {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
 }
 

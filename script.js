@@ -16,7 +16,7 @@ let questions = [
         "right_answer": 3
     },
     {
-        "question": "Was ist die Abkürzung für &lb;World Wide Web&lg;?",
+        "question": "Was ist die Abkürzung für World Wide Web?",
         "answer_1": "W-W-W",
         "answer_2": "W3",
         "answer_3": "WEB",
@@ -24,11 +24,11 @@ let questions = [
         "right_answer": 4
     },
     {
-        "question": "Was ist die Abkürzung für &lb;Application Programming Interface&lg;?",
+        "question": "Was ist die Abkürzung für Application Programming Interface?",
         "answer_1": "APII",
         "answer_2": "API",
         "answer_3": "APL",
-        "answer_4": "<APIE>",
+        "answer_4": "APIE",
         "right_answer": 2
     },
     {
@@ -40,7 +40,7 @@ let questions = [
         "right_answer": 3
     },
     {
-        "question": "Was ist die Abkürzung für &lb;Central Processing Unit&lg;?",
+        "question": "Was ist die Abkürzung für Central Processing Unit?",
         "answer_1": "CPU",
         "answer_2": "APU",
         "answer_3": "GPU",
@@ -64,7 +64,7 @@ let questions = [
         "right_answer": 4
     },
     {
-        "question": "Was ist die Abkürzung für &lb;Uniform Resource Locator&lg;?",
+        "question": "Was ist die Abkürzung für Uniform Resource Locator?",
         "answer_1": "URL",
         "answer_2": "URR",
         "answer_3": "ULU",
@@ -82,6 +82,7 @@ let questions = [
 ];
 
 let currentQuestion = 0;
+let rightQuestions = 0;
 
 function init() {
     document.getElementById('question_amount').innerHTML = questions.length;
@@ -92,25 +93,67 @@ function init() {
 function showQuestion() {
     let question = questions[currentQuestion];
 
+    if(currentQuestion >= questions.length) {
+        //show Endscreen
+        document.getElementById('endScreen').style = '';
+        document.getElementById('questionBody').style = 'display:none';
+        document.getElementById('question_amount_result').innerHTML = questions.length;
+        document.getElementById('amount_of_right_questions').innerHTML = rightQuestions;
+        document.getElementById('quiz_picture').src = 'img/trophy.png';
+    }   else {
+
+        let percent = (currentQuestion +1) / questions.length;
+        percent = percent * 100;
+        document.getElementById('progressBar').innerHTML = `${percent}%`;
+        document.getElementById('progressBar').style = `width: ${percent}%`;
+    document.getElementById('current-question-number').innerHTML = currentQuestion + 1;
     document.getElementById('question').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
 
 function answer(selection) {
     let question = questions[currentQuestion];
-    console.log('Selected answer is', selection);
     let selectedQuestionNumber = selection.slice(-1);
-    console.log('SelectedQuestionNumber is', selectedQuestionNumber);
-    console.log('Current question is', question['right_answer']);
+    let ifOfRightAnswer = `answer_${question['right_answer']}`;
 
     if(selectedQuestionNumber == question['right_answer']) {
-        console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestions++;
     } else {
-        console.log('Falsche Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-warning');
+        document.getElementById(ifOfRightAnswer).parentNode.classList.add('bg-success');
     }
+    document.getElementById('next-button').disabled = false;
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    document.getElementById('next-button').disabled = true;
+    resetButtons();
+    showQuestion();
+
+}
+
+function resetButtons() {
+    document.getElementById('answer_1').parentNode.classList.remove('bg-warning');
+    document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-warning');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-warning');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-warning');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+}
+
+function restart() {
+    document.getElementById('quiz_picture').src = 'img/quiz.png';
+    currentQuestion = 0;
+    rightQuestions = 0;
+    document.getElementById('endScreen').style = 'display: none';
+    document.getElementById('questionBody').style = '';
+    init();
 }
