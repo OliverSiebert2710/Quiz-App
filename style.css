@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    min-height: 100vh;
+    margin-top: 24px;
     background-color: #2E2E2E !important;
     display: flex;
     align-items: center;
@@ -31,11 +31,6 @@ body {
 .question_footer {
     display: flex;
     justify-content: space-between;
-}
-
-.card-img-top {
-    height: 50vh;
-    object-fit: contain;
 }
 
 .btn {
@@ -89,5 +84,29 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 24px;
+}
+
+@media screen and(max-width: 500px) {
+
+    .card {
+        border-style: none !important;
+    }
+
+    .container {
+        padding-right: calc(var(--bs-gutter-x) * .0);
+        padding-left: calc(var(--bs-gutter-x) * .0);
+    }
+
+    .card-img-top {
+        height: 0 !important;
+    }
+}
+
+@media (min-width: 500px) {
+
+    .card-img-top {
+        height: 50vh !important;
+        object-fit: contain !important;
+    } 
 }
 
